@@ -48,8 +48,11 @@ public:
 
 private:
 
-    
+};
 
+//添加日志器Logger类
+class Logger {
+    Logger();
 };
 
 }
