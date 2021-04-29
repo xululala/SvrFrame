@@ -1,17 +1,24 @@
 #ifndef LOGGER_H
 #define LOGGER_H
-#include<string>
+#include <string>
 #include <memory>
+#include <list>
+#include <sstream>
+#include <ostream>
 namespace Primo {
 
 //日志级别枚举
-typedef enum LOG_LEVEL {
-    INFO = 1,
-    DEBUG = 2,
-    WARN = 3,
-    ERROR = 4,
-    FATAL = 5,
-} LOG_LEVEL;
+class LOG_LEVEL {
+public:
+    typedef enum LEVEL {
+        UNKNOWN = 0,
+        DEBUG = 1,
+        INFO= 2,
+        WARN = 3,
+        ERROR = 4,
+        FATAL = 5,
+    } LEVEL;
+};
 
 //日志事件
 class LogEvent {
@@ -34,8 +41,8 @@ class LogFormatter {
 public:
     typedef std::shared_ptr<LogFormatter> ptr;
     LogFormatter();
-    std::string fomat(LOG_LEVEL level, LogEvent::ptr event_ptr);
-
+    ~LogFormatter();
+    std::string format(LogEvent::ptr event);
 private:
 
 };
@@ -44,17 +51,73 @@ private:
 class LogAppender {
 public:
     LogAppender();
+    typedef std::shared_ptr<LogAppender> ptr;
+    virtual void Log(LOG_LEVEL level, LogEvent::ptr) = 0;
 
+    LogFormatter::ptr GetFormatter() const { return mFormatter;};
 
-private:
-
+    void SetFormatter(LogFormatter::ptr formatter) { 
+        mFormatter = formatter; 
+    };
+protected:
+    LOG_LEVEL mLevel;
+    LogFormatter::ptr mFormatter;
 };
 
 //添加日志器Logger类
 class Logger {
+public:
+    typedef std::shared_ptr<Logger> ptr;
     Logger();
+    Logger(const std::string& name = "root");
+    void Log(LOG_LEVEL level, LogEvent::ptr event);
+    void debug(LogEvent::ptr event);
+    void info(LogEvent::ptr event);
+    void warn(LogEvent::ptr event);
+    void error(LogEvent::ptr event);
+
+    void AddAppender(LogAppender::ptr appender);
+    void DelAppender(LogAppender::ptr appender);
+
+    inline void SetName(std::string name) { mName = name; };
+
+    inline void SetLevel(LOG_LEVEL level) { mLevel = level; };
+
+    std::string GetName() const { return mName; };
+
+    LOG_LEVEL GetLevel() const {return mLevel;};
+private:
+    std::string mName;                                     //日志名称
+    LOG_LEVEL mLevel;
+    std::list<LogAppender::ptr> mAppenderList;
+};
+
+//输出到控制台的appender
+class StdOutAppender : public LogAppender {
+public:
+    typedef std::shared_ptr<StdOutAppender> ptr; 
+    StdOutAppender();
+    void Log(LOG_LEVEL level, LogEvent::ptr);
+
+};
+
+
+//输出到文件的appender
+class FileAppender : public LogAppender {
+public:
+    typedef std::shared_ptr<FileAppender> ptr; 
+    FileAppender(const std::string& name);
+    void Log(LOG_LEVEL level, LogEvent::ptr event);
+
+    void SetName(const std::string& name) { mFileName = name; };
+    std::string GetName() const { return mFileName;};
+    bool ReOpen();       //重新打开文件
+
+
+private:
+    std::string mFileName;
+    std::ofstream mFileStream;
 };
 
 }
-
 #endif
