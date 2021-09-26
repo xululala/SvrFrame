@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xululala/SvrFrame/src/log/Logger.h
+string
+-
+memory
+-
+list
+-
+vector
+-
+sstream
+-
+fstream
+-
+iostream
+-
+map
+-
+functional
+-
+tuple
+-
+
+/home/xululala/SvrFrame/tests/testlog.cpp
+../src/log/Logger.h
+/home/xululala/SvrFrame/src/log/Logger.h
+

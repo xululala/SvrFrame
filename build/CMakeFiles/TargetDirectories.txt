@@ -1,0 +1,4 @@
+/home/xululala/SvrFrame/build/CMakeFiles/edit_cache.dir
+/home/xululala/SvrFrame/build/CMakeFiles/rebuild_cache.dir
+/home/xululala/SvrFrame/build/CMakeFiles/primo.dir
+/home/xululala/SvrFrame/build/CMakeFiles/test.dir
