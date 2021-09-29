@@ -1,10 +1,10 @@
 /*
  * @Descripttion: 日志系统
  * @version: 0.1
- * @Author: Primoxu
+ * @Author: primoxu
  * @Date: 2021-08-20
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-26 17:24:12
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2021-09-28 17:14:46
  */
 
 #ifndef _PRIMO_LOGGER_H
@@ -19,6 +19,33 @@
 #include <map>
 #include <functional>
 #include <tuple>
+#include <stdarg.h>
+#include "../util.h"
+
+//流式日志
+#define P_LOG_LEVEL(logger, level) \
+    if (logger->GetLevel() <= level) \
+        primo::LogEventWrap(primo::LogEvent::ptr(new primo::LogEvent(logger, level,  __FILE__, __LINE__, 0, primo::GetThreadId(), \
+                    primo::GetFiberId(), time(0), "Test Thread"))).GetSS()
+
+#define P_LOG_DEBUG(logger) P_LOG_LEVEL(logger, primo::LOG_LEVEL::DEBUG)
+#define P_LOG_INFO(logger) P_LOG_LEVEL(logger, primo::LOG_LEVEL::INFO)
+#define P_LOG_WARN(logger) P_LOG_LEVEL(logger, primo::LOG_LEVEL::WARN)
+#define P_LOG_ERROR(logger) P_LOG_LEVEL(logger, primo::LOG_LEVEL::ERROR)
+#define P_LOG_FATAL(logger) P_LOG_LEVEL(logger, primo::LOG_LEVEL::FATAL)
+
+#define P_LOGF_LEVEL(logger, level, fmt, ...) \
+    if (logger->GetLevel() <= level) \
+        primo::LogEventWrap(primo::LogEvent::ptr(new primo::LogEvent(logger, level,  __FILE__, __LINE__, 0, primo::GetThreadId(), \
+                    primo::GetFiberId(), time(0), "Test Thread"))).GetEvent()->format(fmt, __VA_ARGS__)
+
+#define P_LOGF_DEBUG(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::DEBUG, fmt, __VA_ARGS__)
+#define P_LOGF_INFO(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::INFO, fmt, __VA_ARGS__)
+#define P_LOGF_WARN(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::WARN, fmt, __VA_ARGS__)
+#define P_LOGF_ERROR(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::ERROR, fmt, __VA_ARGS__)
+#define P_LOGF_FATAL(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::FATAL, fmt, __VA_ARGS__)
+
+
 namespace primo 
 {
 
@@ -69,11 +96,16 @@ public:
 
     std::string GetContent() const { return m_ss.str();}
 
-    std::shared_ptr<Logger> GetLogger() const { return mLogger;}
+    std::shared_ptr<Logger> GetLogger() { return mLogger;}
 
     LOG_LEVEL::LEVEL GetLevel() const { return mLevel;}
 
-    //std::string GetContent() const { return mContent;} 
+    std::stringstream& GetSS() {return m_ss;}
+
+    void format(char* fmt, ...);
+
+    void format(char* fmt, va_list arg);
+ 
 private:
     const char* mFile = nullptr;         //文件名
     int32_t mLine = 0;                   //行号
@@ -95,7 +127,7 @@ public:
     typedef std::shared_ptr<LogFormatter> ptr;
     LogFormatter(const std::string& pattern);
     LogFormatter();
-    ~LogFormatter();
+    ~LogFormatter(){};
     std::string format(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level, LogEvent::ptr event);
 public:
     class FormatItem
@@ -224,6 +256,31 @@ private:
     
     //主日志器， 如果当前日志未定义，则使用主日志器输出
     Logger::ptr mRoot;
+};
+
+class LogEventWrap
+{
+public:
+    LogEventWrap(LogEvent::ptr event) : mEvent(event){};
+    
+    //ToDo: 为什么要在析构函数里面出发日志的写入
+    ~LogEventWrap()
+    {
+        mEvent->GetLogger()->Log(mEvent->GetLevel(), mEvent);
+    }
+
+    LogEvent::ptr GetEvent() const
+    {
+        return mEvent;
+    }
+
+    std::stringstream& GetSS()
+    {
+        return mEvent->GetSS();
+    }
+
+private:
+    LogEvent::ptr mEvent;
 };
 
 

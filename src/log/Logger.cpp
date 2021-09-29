@@ -1,15 +1,16 @@
 /*
  * @Descripttion: 日志系统
  * @version: 
- * @Author: Primoxu
+ * @Author: primoxu
  * @Date: 2021-08-20 22:25:03
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-26 17:11:00
+ * @LastEditTime: 2021-09-29 11:24:35
  */
 
 #include "Logger.h"
 
-namespace primo{
+namespace primo
+{
 
 const char* LOG_LEVEL::ToString(LOG_LEVEL::LEVEL level)
 {
@@ -67,6 +68,25 @@ LogEvent::LogEvent(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level
     ,mLogger(logger)
     ,mLevel(level) 
 {
+}
+
+void LogEvent::format(char* fmt, ...)
+{
+    va_list arg_list;
+    va_start(arg_list, fmt);
+    format(fmt, arg_list);
+    va_end(arg_list);
+}
+
+void LogEvent::format(char* fmt, va_list arg)
+{
+    char* buf = nullptr;
+    int len = vasprintf(&buf, fmt, arg);
+    if (len != -1)
+    {
+        m_ss << std::string(buf, len);
+        free(buf);
+    }
 }
 
 Logger::Logger(const std::string& name) 
@@ -173,10 +193,6 @@ LogFormatter::LogFormatter(const std::string& pattern)
     Init();
 }
 
-LogFormatter::~LogFormatter()
-{
-
-}
 
 std::string LogFormatter::format(Logger::ptr logger, LOG_LEVEL::LEVEL level, LogEvent::ptr event)
 {
@@ -361,7 +377,6 @@ void LogFormatter::Init()
                 iFmtBegin = n;
                 ++n;
                 continue;
-            
             }
 
             else if (iFmtStatus == 1 && mPattern[n] == '}')
@@ -383,12 +398,12 @@ void LogFormatter::Init()
         {
             if (!nstr.empty())
             {
-                vec.push_back(std::make_tuple(nstr, std::string(), 0));
+                vec.push_back(std::make_tuple(nstr, "", 0));
                 nstr.clear();
             }
             vec.push_back(std::make_tuple(str, fmt, 1));
             i = n - 1;
-        } 
+        }
         else if (iFmtStatus == 1)
         {
             std::cout << "pattern parse error: " << mPattern << " - " << mPattern.substr(i) << std::endl;
@@ -427,7 +442,7 @@ void LogFormatter::Init()
         if(std::get<2>(i) == 0)
         {
             mItems.push_back(FormatItem::ptr(new StringFormatItem(std::get<0>(i))));
-        } 
+        }
         else 
         {
             auto it = S_FormatItems.find(std::get<0>(i));
@@ -435,7 +450,7 @@ void LogFormatter::Init()
             {
                 mItems.push_back(FormatItem::ptr(new StringFormatItem("<<error_format %" + std::get<0>(i) + ">>")));
                 bError = true;
-            } 
+            }
             else 
             {
                 mItems.push_back(it->second(std::get<1>(i)));

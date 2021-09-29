@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "../lib/libprimo.pdb"
   "../lib/libprimo.so"
   "CMakeFiles/primo.dir/src/log/Logger.o"
+  "CMakeFiles/primo.dir/src/util.o"
 )
 
 # Per-language clean rules from dependency scanning.

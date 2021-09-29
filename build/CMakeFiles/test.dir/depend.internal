@@ -3,4 +3,5 @@
 
 CMakeFiles/test.dir/tests/testlog.o
  /home/xululala/SvrFrame/src/log/Logger.h
+ /home/xululala/SvrFrame/src/util.h
  /home/xululala/SvrFrame/tests/testlog.cpp

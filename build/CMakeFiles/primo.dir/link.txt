@@ -1,1 +1,1 @@
-/usr/bin/c++ -fPIC  -std=c++11 -shared -Wl,-soname,libprimo.so -o ../lib/libprimo.so CMakeFiles/primo.dir/src/log/Logger.o 
+/usr/bin/c++ -fPIC  -std=c++11 -shared -Wl,-soname,libprimo.so -o ../lib/libprimo.so CMakeFiles/primo.dir/src/log/Logger.o CMakeFiles/primo.dir/src/util.o 

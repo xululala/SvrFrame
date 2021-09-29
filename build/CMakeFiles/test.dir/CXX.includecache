@@ -27,6 +27,22 @@ functional
 -
 tuple
 -
+stdarg.h
+-
+../util.h
+/home/xululala/SvrFrame/src/util.h
+
+/home/xululala/SvrFrame/src/util.h
+pthread.h
+-
+unistd.h
+-
+stdint.h
+-
+sys/types.h
+-
+sys/syscall.h
+-
 
 /home/xululala/SvrFrame/tests/testlog.cpp
 ../src/log/Logger.h

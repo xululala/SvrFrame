@@ -4,3 +4,7 @@
 CMakeFiles/primo.dir/src/log/Logger.o
  /home/xululala/SvrFrame/src/log/Logger.cpp
  /home/xululala/SvrFrame/src/log/Logger.h
+ /home/xululala/SvrFrame/src/util.h
+CMakeFiles/primo.dir/src/util.o
+ /home/xululala/SvrFrame/src/util.cpp
+ /home/xululala/SvrFrame/src/util.h

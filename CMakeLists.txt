@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(
     LIB_SRC
     src/log/Logger.cpp
+    src/util.cpp
 )
 
 add_library(primo SHARED ${LIB_SRC})

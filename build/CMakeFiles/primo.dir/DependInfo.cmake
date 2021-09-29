@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/xululala/SvrFrame/src/log/Logger.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/log/Logger.o"
+  "/home/xululala/SvrFrame/src/util.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/util.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

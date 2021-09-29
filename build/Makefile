@@ -174,6 +174,21 @@ src/log/Logger.s:
 .PHONY : src/log/Logger.s
 
 # target to build an object file
+src/util.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.o
+.PHONY : src/util.o
+
+# target to preprocess a source file
+src/util.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.i
+.PHONY : src/util.i
+
+# target to generate assembly for a file
+src/util.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.s
+.PHONY : src/util.s
+
+# target to build an object file
 tests/testlog.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/testlog.o
 .PHONY : tests/testlog.o
@@ -201,6 +216,9 @@ help:
 	@echo "... src/log/Logger.o"
 	@echo "... src/log/Logger.i"
 	@echo "... src/log/Logger.s"
+	@echo "... src/util.o"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
 	@echo "... tests/testlog.o"
 	@echo "... tests/testlog.i"
 	@echo "... tests/testlog.s"
