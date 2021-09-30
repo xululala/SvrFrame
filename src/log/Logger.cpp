@@ -3,8 +3,8 @@
  * @version: 
  * @Author: primoxu
  * @Date: 2021-08-20 22:25:03
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-09-29 17:29:38
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2021-09-30 15:37:42
  */
 
 #include "Logger.h"
@@ -91,7 +91,7 @@ void LogEvent::format(char* fmt, va_list arg)
 
 Logger::Logger(const std::string& name) 
     : mName(name)
-    , mLevel(LOG_LEVEL::DEBUG)
+    , mLevel(LOG_LEVEL::INFO)
 {
     mFormatter.reset(new LogFormatter("%d{%Y-%m-%d %H:%M:%S}%T%t%T%N%T%F%T[%p]%T[%c]%T%f:%l%T%m%n"));
 }
@@ -180,7 +180,8 @@ void FileAppender::Log(Logger::ptr logger, LOG_LEVEL::LEVEL level, LogEvent::ptr
 
 std::ofstream& FileAppender::ReOpen() 
 {
-    if(mFileStream) {
+    if(mFileStream) 
+    {
         mFileStream.close();
     }
     mFileStream.open(mFileName);
@@ -459,6 +460,18 @@ void LogFormatter::Init()
         //std::cout << "(" << std::get<0>(i) << ") - (" << std::get<1>(i) << ") - (" << std::get<2>(i) << ")" << std::endl;
     }
     //std::cout << m_items.size() << std::endl;
+}
+
+
+void LoggerMgr::Init()
+{
+
+}
+
+Logger::ptr LoggerMgr::GetLogger(const std::string& name) const
+{
+    auto itr = mLoggers.find(name);
+    return itr == mLoggers.end() ? mRoot : itr->second;
 }
 
 }

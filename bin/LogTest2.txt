@@ -1,0 +1,1 @@
+2021-09-30 15:23:29	3233939	Test Thread	0	[INFO]	[root]	/home/xululala/SvrFrame/tests/testlog.cpp:27	test logmgr info primo test, 1030

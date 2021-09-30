@@ -4,7 +4,7 @@
  * @Author: primoxu
  * @Date: 2021-08-20
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-09-28 17:14:46
+ * @LastEditTime: 2021-09-30 15:50:51
  */
 
 #ifndef _PRIMO_LOGGER_H
@@ -21,6 +21,7 @@
 #include <tuple>
 #include <stdarg.h>
 #include "../util.h"
+#include "../Singleton.h"
 
 //流式日志
 #define P_LOG_LEVEL(logger, level) \
@@ -178,6 +179,11 @@ public:
     {
         mLevel = level;
     }
+
+    LOG_LEVEL::LEVEL GetLevel() const
+    {
+        return mLevel;
+    }
 protected:
     LOG_LEVEL::LEVEL mLevel = LOG_LEVEL::DEBUG;
     bool bHasFormatter = false;
@@ -283,9 +289,24 @@ private:
     LogEvent::ptr mEvent;
 };
 
+class LoggerMgr
+{
+public:
+    LoggerMgr()
+    {
+        mRoot.reset(new Logger);
+        mRoot->AddAppender(LogAppender::ptr(new StdOutAppender()));
+        mLoggers[mRoot->GetName()] = mRoot;
+    };
+    Logger::ptr GetLogger(const std::string& name) const;
+    void AddLogger();
+    void Init();
+private:
+     std::map<std::string, Logger::ptr> mLoggers;
+     Logger::ptr mRoot;
+};
 
-
-
+typedef Singleton<LoggerMgr> LOGMGR;
 
 }
 #endif

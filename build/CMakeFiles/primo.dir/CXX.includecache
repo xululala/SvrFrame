@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/xululala/SvrFrame/src/Singleton.h
+memory
+-
+
 /home/xululala/SvrFrame/src/log/Logger.cpp
 Logger.h
 /home/xululala/SvrFrame/src/log/Logger.h
@@ -35,6 +39,8 @@ stdarg.h
 -
 ../util.h
 /home/xululala/SvrFrame/src/util.h
+../Singleton.h
+/home/xululala/SvrFrame/src/Singleton.h
 
 /home/xululala/SvrFrame/src/util.h
 pthread.h
