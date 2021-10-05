@@ -4,7 +4,7 @@
  * @Author: primoxu
  * @Date: 2021-08-20 22:25:03
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-09-30 15:37:42
+ * @LastEditTime: 2021-10-01 15:55:29
  */
 
 #include "Logger.h"
@@ -465,7 +465,11 @@ void LogFormatter::Init()
 
 void LoggerMgr::Init()
 {
+}
 
+Logger::ptr LoggerMgr::GetRoot() const
+{
+    return mRoot;
 }
 
 Logger::ptr LoggerMgr::GetLogger(const std::string& name) const

@@ -4,7 +4,7 @@
  * @Author: primoxu
  * @Date: 2021-08-20
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-09-30 15:50:51
+ * @LastEditTime: 2021-10-02 15:36:29
  */
 
 #ifndef _PRIMO_LOGGER_H
@@ -46,7 +46,9 @@
 #define P_LOGF_ERROR(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::ERROR, fmt, __VA_ARGS__)
 #define P_LOGF_FATAL(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::FATAL, fmt, __VA_ARGS__)
 
+#define P_LOG_ROOT primo::LOGMGR::GetInstance()->GetRoot()
 
+#define P_LOG_NAME(name) primo::LOGMGR::GetInstance()->GetLogger(name)
 namespace primo 
 {
 
@@ -299,6 +301,7 @@ public:
         mLoggers[mRoot->GetName()] = mRoot;
     };
     Logger::ptr GetLogger(const std::string& name) const;
+    Logger::ptr GetRoot() const;
     void AddLogger();
     void Init();
 private:

@@ -10,10 +10,6 @@
 memory
 -
 
-/home/xululala/SvrFrame/src/config.cpp
-config.h
-/home/xululala/SvrFrame/src/config.h
-
 /home/xululala/SvrFrame/src/config.h
 memory
 -
@@ -75,4 +71,10 @@ sys/syscall.h
 -
 cxxabi.h
 -
+
+/home/xululala/SvrFrame/tests/test_config.cpp
+../src/log/Logger.h
+/home/xululala/SvrFrame/src/log/Logger.h
+../src/config.h
+/home/xululala/SvrFrame/src/config.h
 

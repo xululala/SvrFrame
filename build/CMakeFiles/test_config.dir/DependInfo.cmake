@@ -4,16 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xululala/SvrFrame/src/config.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/config.o"
-  "/home/xululala/SvrFrame/src/log/Logger.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/log/Logger.o"
-  "/home/xululala/SvrFrame/src/util.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/util.o"
+  "/home/xululala/SvrFrame/tests/test_config.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/test_config.dir/tests/test_config.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "primo_EXPORTS"
-  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
@@ -21,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

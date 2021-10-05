@@ -146,17 +146,32 @@ primo/fast:
 .PHONY : primo/fast
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named test_config
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
-.PHONY : test
+test_config: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_config
+.PHONY : test_config
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+test_config/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
+.PHONY : test_config/fast
+
+# target to build an object file
+src/config.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.o
+.PHONY : src/config.o
+
+# target to preprocess a source file
+src/config.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.i
+.PHONY : src/config.i
+
+# target to generate assembly for a file
+src/config.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.s
+.PHONY : src/config.s
 
 # target to build an object file
 src/log/Logger.o:
@@ -189,19 +204,19 @@ src/util.s:
 .PHONY : src/util.s
 
 # target to build an object file
-tests/testlog.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/testlog.o
-.PHONY : tests/testlog.o
+tests/test_config.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.o
+.PHONY : tests/test_config.o
 
 # target to preprocess a source file
-tests/testlog.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/testlog.i
-.PHONY : tests/testlog.i
+tests/test_config.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.i
+.PHONY : tests/test_config.i
 
 # target to generate assembly for a file
-tests/testlog.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/testlog.s
-.PHONY : tests/testlog.s
+tests/test_config.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.s
+.PHONY : tests/test_config.s
 
 # Help Target
 help:
@@ -212,16 +227,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... primo"
-	@echo "... test"
+	@echo "... test_config"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
 	@echo "... src/log/Logger.o"
 	@echo "... src/log/Logger.i"
 	@echo "... src/log/Logger.s"
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... tests/testlog.o"
-	@echo "... tests/testlog.i"
-	@echo "... tests/testlog.s"
+	@echo "... tests/test_config.o"
+	@echo "... tests/test_config.i"
+	@echo "... tests/test_config.s"
 .PHONY : help
 
 

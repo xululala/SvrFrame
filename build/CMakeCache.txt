@@ -219,6 +219,9 @@ EXECUTABLE_OUTPUT_PATH:PATH=
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
 
+//Path to a library.
+YAMLCPP:FILEPATH=/usr/local/lib/libyaml-cpp.a
+
 //Value Computed by CMake
 primo_BINARY_DIR:STATIC=/home/xululala/SvrFrame/build
 

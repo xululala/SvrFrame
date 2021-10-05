@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     primo::Logger::ptr logger2(primo::LOGMGR::GetInstance()->GetLogger("root"));
     std::cout << logger2->GetName() << std::endl;
     //logger2->AddAppender(primo::FileAppender::ptr(new primo::FileAppender("LogTest2.txt")));
-    P_LOGF_INFO(logger2, "test logmgr info %s, %d", logger2->GetName().c_str(), 1030);
+    P_LOGF_INFO(P_LOG_ROOT, "test logmgr info %s, %d", logger2->GetName().c_str(), 1030);
     //std::cout << " Test log system accomplished! " << std::endl;
     return 0;
 }
