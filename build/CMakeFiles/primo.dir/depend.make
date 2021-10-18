@@ -8,6 +8,7 @@ CMakeFiles/primo.dir/src/config.o: ../src/log/Logger.h
 CMakeFiles/primo.dir/src/config.o: ../src/util.h
 
 CMakeFiles/primo.dir/src/log/Logger.o: ../src/Singleton.h
+CMakeFiles/primo.dir/src/log/Logger.o: ../src/config.h
 CMakeFiles/primo.dir/src/log/Logger.o: ../src/log/Logger.cpp
 CMakeFiles/primo.dir/src/log/Logger.o: ../src/log/Logger.h
 CMakeFiles/primo.dir/src/log/Logger.o: ../src/util.h

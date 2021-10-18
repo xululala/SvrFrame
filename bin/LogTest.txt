@@ -1,2 +1,0 @@
-2021-09-30 15:29:07	3234577	Test Thread	0	[INFO]	[root]	/home/xululala/SvrFrame/tests/testlog.cpp:22	test macro log
-2021-09-30 15:29:07	3234577	Test Thread	0	[INFO]	[root]	/home/xululala/SvrFrame/tests/testlog.cpp:23	test 5

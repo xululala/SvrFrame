@@ -21,14 +21,18 @@ boost/lexical_cast.hpp
 -
 yaml-cpp/yaml.h
 -
-log/Logger.h
-/home/xululala/SvrFrame/src/log/Logger.h
 unordered_map
 -
 unordered_set
 -
 list
 -
+functional
+-
+log/Logger.h
+/home/xululala/SvrFrame/src/log/Logger.h
+util.h
+/home/xululala/SvrFrame/src/util.h
 
 /home/xululala/SvrFrame/src/log/Logger.h
 string
@@ -53,6 +57,8 @@ tuple
 -
 stdarg.h
 -
+set
+-
 ../util.h
 /home/xululala/SvrFrame/src/util.h
 ../Singleton.h
@@ -70,6 +76,8 @@ sys/types.h
 sys/syscall.h
 -
 cxxabi.h
+-
+string
 -
 
 /home/xululala/SvrFrame/tests/test_config.cpp

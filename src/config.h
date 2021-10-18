@@ -14,10 +14,15 @@
 #include <sstream>
 #include <boost/lexical_cast.hpp>
 #include <yaml-cpp/yaml.h>
-#include "log/Logger.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <list>
+#include <functional>
+
+#include "log/Logger.h"
+#include "util.h"
+
+
 namespace primo
 {
 
@@ -27,7 +32,10 @@ public:
     typedef std::shared_ptr<CfgVarBase> ptr;
     CfgVarBase(const std::string& name, const std::string desc = "")
         : mName(name),
-          mDesc(desc){}
+          mDesc(desc)
+    {
+        std::transform(mName.begin(), mName.end(), mName.begin(), ::tolower);
+    }
 
     virtual ~CfgVarBase(){}
 
@@ -43,7 +51,7 @@ public:
 
     virtual std::string ToString() = 0;
     virtual bool FromString(const std::string& val) = 0; 
-    virtual const char* GetTypeName() const = 0;
+    virtual std::string GetTypeName() const = 0;
 protected:
     std::string mName;
     std::string mDesc;
@@ -58,7 +66,7 @@ class LexicalCast
 {
 public:
     /**
-     * @brief 类型转换
+     * @brief 类型转换/
      * @param[in] v 源类型值
      * @return 返回v转换后的目标类型
      * @exception 当类型不可转换时抛出异常
@@ -304,11 +312,13 @@ class CfgVar : public CfgVarBase
 {
 public:
     typedef std::shared_ptr<CfgVar> ptr;
+    typedef std::function<void (const T& old_value, const T& new_value)> OnChangeCallback;
+
     CfgVar(const std::string& name, 
             const T& default_val,
             const std::string desc = "")
         : CfgVarBase(name, desc),
-        mVal(default_val){}
+          mVal(default_val){}
 
     std::string ToString() override
     {
@@ -318,27 +328,31 @@ public:
         }
         catch(const std::exception& e)
         {
-            std::cerr << e.what() << '\n';
-            P_LOG_ERROR(P_LOG_ROOT) << "CfgVar::ToString exception, convert to string!";
-            return "";
+            P_LOG_ERROR(P_LOG_ROOT()) << "CfgVar::ToString exception "
+                << e.what() << " convert: " << TypeToName<T>() << " to string"
+                << " name=" << mName;
         }
+        return "";
     }
 
     bool FromString (const std::string& val) override
     {
         try
         {
+            //std::cout << "to set the string value: " << val << " to config" << std::endl;
             SetValue(FromStr()(val));   
         }
         catch(const std::exception& e)
         {
-            P_LOG_ERROR(P_LOG_ROOT) << "CfgVar::FromString exception, convert string to another";
-            return false;
+            P_LOG_ERROR(P_LOG_ROOT()) << "CfgVar::FromString exception "
+                << e.what() << " convert: string to " << TypeToName<T>()
+                << " name=" << mName
+                << " - " << val;
         }
-        return true;
+        return false;
     }
 
-    const char* GetTypeName() const
+    std::string GetTypeName() const override
     {
         return TypeToName<T>();
     }
@@ -350,15 +364,48 @@ public:
 
     void SetValue(const T& val)
     {
+        if (mVal == val)
+        {
+            return;
+        }
+        
+        for (auto& cb : mCbs)
+        {
+            cb.second(mVal, val);
+        }
         mVal = val;
+    }
+
+    uint64_t AddListener(OnChangeCallback cbfunc)
+    {
+        static uint64_t sFuncId= 0;
+        ++sFuncId;
+        mCbs[sFuncId] = cbfunc;
+        return sFuncId;
+    }
+
+    void DelListener(uint64_t key)
+    {
+        mCbs.erase(key);
+    }
+
+    OnChangeCallback GetListener(uint64_t key)
+    {
+        return mCbs[key];
+    }
+
+    void ClearListener()
+    {
+        mCbs.clear();
     }
 private:
     T mVal;
+    std::map<uint64_t, OnChangeCallback> mCbs;
 };
 
 
 class Config
-{
+{ 
 public:
     typedef std::unordered_map<std::string, CfgVarBase::ptr> CfgVarMap;
 
@@ -376,18 +423,21 @@ public:
     static typename CfgVar<T>::ptr LookUp(const std::string& name,
         const T& default_value, const std::string& desc = "")
     {
+        //std::cout << " test trace" << std::endl;
         auto itr = GetDatas().find(name);
         if (itr != GetDatas().end())
         {
             auto tmp = std::dynamic_pointer_cast<CfgVar<T> >(itr->second);
             if (tmp)
             {
-                P_LOG_INFO(P_LOG_ROOT) << "Lookup name succeed";
+                P_LOG_INFO(P_LOG_ROOT()) << "Lookup name=" << name << " exists";
                 return tmp;
             }
             else
             {
-                P_LOG_ERROR(P_LOG_ROOT) << "Lookup name exits but type not valid";
+                P_LOG_ERROR(P_LOG_ROOT()) << "Lookup name=" << name << " exists but type not "
+                        << TypeToName<T>() << " real_type=" << itr->second->GetTypeName()
+                        << " " << itr->second->ToString();
                 return nullptr;
             }
         }
@@ -395,13 +445,13 @@ public:
         if (name.find_first_not_of("abcdefghijklmnopqrstuvwxyz_.0123456789")
                 != std::string::npos)
         {
-            P_LOG_ERROR(P_LOG_ROOT) << "Lookup name invalid";
+            P_LOG_ERROR(P_LOG_ROOT()) << "Lookup name invalid";
             throw std::invalid_argument(name);
         }
 
         typename CfgVar<T>::ptr v(new CfgVar<T>(name, default_value, desc));
         GetDatas()[name] = v;
-        return v;
+        return v; 
     }
 
     /**

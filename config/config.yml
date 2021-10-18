@@ -1,21 +1,14 @@
 logs:
-    - name: root
+    - name: sys
       level: info
       formatter: "%d%T%m%n"
-      appender: 
-          - type: FileLogAppender
+      appenders: 
+          - type: FileAppender
             file: log.txt
           - type: StdOutAppender
-    - name: system
+    - name: test
       level: debug
       formatter: "%d%T"
-      appender: 
-          - type: FileLogAppender
-            file: log2.txt
-          - type: StdOutAppender
-
-system:
-    port: 9900
-    value: 15
-    vec: [1, 3, 4]
-    map: {"wu": 24, "xu": 23}
+      appenders: 
+        - type: StdOutAppender
+          file: log1.txt

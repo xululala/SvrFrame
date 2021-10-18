@@ -6,5 +6,5 @@ CXX_DEFINES = -Dprimo_EXPORTS
 
 CXX_INCLUDES = 
 
-CXX_FLAGS =  -std=c++11 -fPIC
+CXX_FLAGS = -fPIC
 

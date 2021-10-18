@@ -20,6 +20,7 @@
 #include <functional>
 #include <tuple>
 #include <stdarg.h>
+#include <set>
 #include "../util.h"
 #include "../Singleton.h"
 
@@ -46,13 +47,16 @@
 #define P_LOGF_ERROR(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::ERROR, fmt, __VA_ARGS__)
 #define P_LOGF_FATAL(logger, fmt, ...) P_LOGF_LEVEL(logger, primo::LOG_LEVEL::FATAL, fmt, __VA_ARGS__)
 
-#define P_LOG_ROOT primo::LOGMGR::GetInstance()->GetRoot()
-
+#define P_LOG_ROOT() primo::LOGMGR::GetInstance()->GetRoot()
 #define P_LOG_NAME(name) primo::LOGMGR::GetInstance()->GetLogger(name)
+
+
 namespace primo 
 {
 
 class Logger;
+class LoggerMgr;
+
 
 //日志级别枚举
 class LOG_LEVEL 
@@ -126,6 +130,8 @@ private:
 //日志格式器
 class LogFormatter 
 {
+
+//friend class Logger;
 public:
     typedef std::shared_ptr<LogFormatter> ptr;
     LogFormatter(const std::string& pattern);
@@ -159,7 +165,7 @@ private:
 //日志输出器
 class LogAppender 
 {
-//friend class Logger;
+friend class Logger;
 public:
     //typedef Spinlock MutexType; 
     LogAppender(){};
@@ -168,14 +174,22 @@ public:
     typedef std::shared_ptr<LogAppender> ptr;
     virtual void Log(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level, LogEvent::ptr) = 0;
     
-    //virtual std::string ToYamlString() = 0;
+    virtual std::string ToYamlString() = 0;
 
     LogFormatter::ptr GetFormatter() const { return mFormatter;};
 
-    void SetFormatter(LogFormatter::ptr formatter) 
+    void SetFormatter(LogFormatter::ptr val) 
     { 
-        mFormatter = formatter; 
-    };
+        mFormatter = val;
+        if(mFormatter) 
+        {
+            bHasFormatter = true;
+        } 
+        else 
+        {
+            bHasFormatter = false;
+        }
+    }
 
     void SetLevel(LOG_LEVEL::LEVEL level)
     {
@@ -186,6 +200,7 @@ public:
     {
         return mLevel;
     }
+
 protected:
     LOG_LEVEL::LEVEL mLevel = LOG_LEVEL::DEBUG;
     bool bHasFormatter = false;
@@ -202,7 +217,7 @@ public:
     StdOutAppender(){};
     virtual ~StdOutAppender(){};
     void Log(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level, LogEvent::ptr event) override;
-    //std::string ToYamlString() override;
+    std::string ToYamlString() override;
 };
 
 
@@ -217,7 +232,7 @@ public:
     void Log(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level, LogEvent::ptr event) override;
     void SetName(const std::string& name) { mFileName = name; } ;
     std::string GetName() const { return mFileName;};
-    //std::string ToYamlString() override;
+    std::string ToYamlString() override;
     std::ofstream& ReOpen();       //重新打开文件
 private:
     std::string mFileName;
@@ -228,6 +243,7 @@ private:
 //添加日志器Logger类
 class Logger : public std::enable_shared_from_this<Logger> 
 {
+friend class LoggerMgr;
 public:
     typedef std::shared_ptr<Logger> ptr;
     //Logger();
@@ -255,6 +271,17 @@ public:
 
     //设置文本日志格式
     void SetFormatter(const std::string& str);
+
+    void ClearAppenders()
+    {
+        mAppenderList.clear();
+    }
+
+    std::string GetFormatterPattern() const
+    {
+        return mFormatter->GetPattern();
+    }
+    std::string ToYamlString();
 
 private:
     std::string mName;                         //日志名称
@@ -300,10 +327,11 @@ public:
         mRoot->AddAppender(LogAppender::ptr(new StdOutAppender()));
         mLoggers[mRoot->GetName()] = mRoot;
     };
-    Logger::ptr GetLogger(const std::string& name) const;
+    Logger::ptr GetLogger(const std::string& name);
     Logger::ptr GetRoot() const;
     void AddLogger();
     void Init();
+    std::string ToYamlString();
 private:
      std::map<std::string, Logger::ptr> mLoggers;
      Logger::ptr mRoot;
