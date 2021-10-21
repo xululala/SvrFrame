@@ -40,12 +40,6 @@ set
 ../Singleton.h
 /home/xululala/SvrFrame/primo/Singleton.h
 
-/home/xululala/SvrFrame/primo/thread.cpp
-thread.h
-/home/xululala/SvrFrame/primo/thread.h
-log/Logger.h
-/home/xululala/SvrFrame/primo/log/Logger.h
-
 /home/xululala/SvrFrame/primo/thread.h
 thread
 -
@@ -72,5 +66,13 @@ sys/syscall.h
 cxxabi.h
 -
 string
+-
+
+/home/xululala/SvrFrame/tests/test_thread.cpp
+../primo/thread.h
+/home/xululala/SvrFrame/primo/thread.h
+../primo/log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
+vector
 -
 

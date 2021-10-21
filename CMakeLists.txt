@@ -15,22 +15,33 @@ find_library(YAMLCPP libyaml-cpp)
 
 set(
     LIB_SRC
-    src/log/Logger.cpp
-    src/util.cpp
-    src/config.cpp
+    primo/log/Logger.cpp
+    primo/util.cpp
+    primo/config.cpp
+    primo/thread.cpp
 )
 
 add_library(primo SHARED ${LIB_SRC})
 
-#add_executable(test tests/testlog.cpp)
-#add_dependencies(test primo)
-#target_link_libraries(test primo)
+set (LIB_LIB
+    primo
+    pthread
+    ${YAMLCPP}
+)
+
+add_executable(test_log tests/testlog.cpp)
+add_dependencies(test_log primo)
+target_link_libraries(test_log ${LIB_LIB})
 #force_redefine_file_macro_for_sources(primo)
 
 add_executable(test_config tests/test_config.cpp)
 add_dependencies(test_config primo)
-target_link_libraries(test_config primo ${YAMLCPP})
+target_link_libraries(test_config ${LIB_LIB})
 #force_redefine_file_macro_for_sources(test_config)
+
+add_executable(test_thread tests/test_thread.cpp)
+add_dependencies(test_thread primo)
+target_link_libraries(test_thread ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

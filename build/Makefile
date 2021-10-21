@@ -78,17 +78,6 @@ CMAKE_BINARY_DIR = /home/xululala/SvrFrame/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -99,6 +88,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -133,17 +133,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named primo
+# Target rules for targets named test_thread
 
 # Build rule for target.
-primo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 primo
-.PHONY : primo
+test_thread: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_thread
+.PHONY : test_thread
 
 # fast build rule for target.
-primo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/build
-.PHONY : primo/fast
+test_thread/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
+.PHONY : test_thread/fast
 
 #=============================================================================
 # Target rules for targets named test_config
@@ -158,50 +158,91 @@ test_config/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
 .PHONY : test_config/fast
 
-# target to build an object file
-src/config.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.o
-.PHONY : src/config.o
+#=============================================================================
+# Target rules for targets named primo
 
-# target to preprocess a source file
-src/config.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.i
-.PHONY : src/config.i
+# Build rule for target.
+primo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 primo
+.PHONY : primo
 
-# target to generate assembly for a file
-src/config.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/config.s
-.PHONY : src/config.s
+# fast build rule for target.
+primo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/build
+.PHONY : primo/fast
 
-# target to build an object file
-src/log/Logger.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/log/Logger.o
-.PHONY : src/log/Logger.o
+#=============================================================================
+# Target rules for targets named test_log
 
-# target to preprocess a source file
-src/log/Logger.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/log/Logger.i
-.PHONY : src/log/Logger.i
+# Build rule for target.
+test_log: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_log
+.PHONY : test_log
 
-# target to generate assembly for a file
-src/log/Logger.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/log/Logger.s
-.PHONY : src/log/Logger.s
+# fast build rule for target.
+test_log/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
+.PHONY : test_log/fast
 
 # target to build an object file
-src/util.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.o
-.PHONY : src/util.o
+primo/config.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/config.o
+.PHONY : primo/config.o
 
 # target to preprocess a source file
-src/util.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.i
-.PHONY : src/util.i
+primo/config.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/config.i
+.PHONY : primo/config.i
 
 # target to generate assembly for a file
-src/util.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/src/util.s
-.PHONY : src/util.s
+primo/config.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/config.s
+.PHONY : primo/config.s
+
+# target to build an object file
+primo/log/Logger.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/log/Logger.o
+.PHONY : primo/log/Logger.o
+
+# target to preprocess a source file
+primo/log/Logger.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/log/Logger.i
+.PHONY : primo/log/Logger.i
+
+# target to generate assembly for a file
+primo/log/Logger.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/log/Logger.s
+.PHONY : primo/log/Logger.s
+
+# target to build an object file
+primo/thread.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/thread.o
+.PHONY : primo/thread.o
+
+# target to preprocess a source file
+primo/thread.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/thread.i
+.PHONY : primo/thread.i
+
+# target to generate assembly for a file
+primo/thread.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/thread.s
+.PHONY : primo/thread.s
+
+# target to build an object file
+primo/util.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/util.o
+.PHONY : primo/util.o
+
+# target to preprocess a source file
+primo/util.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/util.i
+.PHONY : primo/util.i
+
+# target to generate assembly for a file
+primo/util.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/primo/util.s
+.PHONY : primo/util.s
 
 # target to build an object file
 tests/test_config.o:
@@ -218,6 +259,36 @@ tests/test_config.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.s
 .PHONY : tests/test_config.s
 
+# target to build an object file
+tests/test_thread.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.o
+.PHONY : tests/test_thread.o
+
+# target to preprocess a source file
+tests/test_thread.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.i
+.PHONY : tests/test_thread.i
+
+# target to generate assembly for a file
+tests/test_thread.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.s
+.PHONY : tests/test_thread.s
+
+# target to build an object file
+tests/testlog.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/tests/testlog.o
+.PHONY : tests/testlog.o
+
+# target to preprocess a source file
+tests/testlog.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/tests/testlog.i
+.PHONY : tests/testlog.i
+
+# target to generate assembly for a file
+tests/testlog.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/tests/testlog.s
+.PHONY : tests/testlog.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -228,18 +299,29 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... primo"
 	@echo "... test_config"
-	@echo "... src/config.o"
-	@echo "... src/config.i"
-	@echo "... src/config.s"
-	@echo "... src/log/Logger.o"
-	@echo "... src/log/Logger.i"
-	@echo "... src/log/Logger.s"
-	@echo "... src/util.o"
-	@echo "... src/util.i"
-	@echo "... src/util.s"
+	@echo "... test_log"
+	@echo "... test_thread"
+	@echo "... primo/config.o"
+	@echo "... primo/config.i"
+	@echo "... primo/config.s"
+	@echo "... primo/log/Logger.o"
+	@echo "... primo/log/Logger.i"
+	@echo "... primo/log/Logger.s"
+	@echo "... primo/thread.o"
+	@echo "... primo/thread.i"
+	@echo "... primo/thread.s"
+	@echo "... primo/util.o"
+	@echo "... primo/util.i"
+	@echo "... primo/util.s"
 	@echo "... tests/test_config.o"
 	@echo "... tests/test_config.i"
 	@echo "... tests/test_config.s"
+	@echo "... tests/test_thread.o"
+	@echo "... tests/test_thread.i"
+	@echo "... tests/test_thread.s"
+	@echo "... tests/testlog.o"
+	@echo "... tests/testlog.i"
+	@echo "... tests/testlog.s"
 .PHONY : help
 
 

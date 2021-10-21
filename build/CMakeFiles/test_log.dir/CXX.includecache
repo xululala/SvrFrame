@@ -40,24 +40,6 @@ set
 ../Singleton.h
 /home/xululala/SvrFrame/primo/Singleton.h
 
-/home/xululala/SvrFrame/primo/thread.cpp
-thread.h
-/home/xululala/SvrFrame/primo/thread.h
-log/Logger.h
-/home/xululala/SvrFrame/primo/log/Logger.h
-
-/home/xululala/SvrFrame/primo/thread.h
-thread
--
-pthread.h
--
-functional
--
-memory
--
-semaphore.h
--
-
 /home/xululala/SvrFrame/primo/util.h
 pthread.h
 -
@@ -73,4 +55,8 @@ cxxabi.h
 -
 string
 -
+
+/home/xululala/SvrFrame/tests/testlog.cpp
+../primo/log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 

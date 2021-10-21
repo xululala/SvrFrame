@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xululala/SvrFrame/src/config.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/config.o"
-  "/home/xululala/SvrFrame/src/log/Logger.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/log/Logger.o"
-  "/home/xululala/SvrFrame/src/util.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/src/util.o"
+  "/home/xululala/SvrFrame/primo/config.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/primo/config.o"
+  "/home/xululala/SvrFrame/primo/log/Logger.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/primo/log/Logger.o"
+  "/home/xululala/SvrFrame/primo/thread.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/primo/thread.o"
+  "/home/xululala/SvrFrame/primo/util.cpp" "/home/xululala/SvrFrame/build/CMakeFiles/primo.dir/primo/util.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,14 +1,8 @@
 logs:
-    - name: sys
+    - name: system
       level: info
-      formatter: "%d%T%m%n"
+      formatter: "%d%T%m%T%t%T%n"
       appenders: 
           - type: FileAppender
             file: log.txt
           - type: StdOutAppender
-    - name: test
-      level: debug
-      formatter: "%d%T"
-      appenders: 
-        - type: StdOutAppender
-          file: log1.txt

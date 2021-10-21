@@ -429,7 +429,7 @@ private:
 // %d{%Y-%m-%d %H:%M:%S}%T%t%T%N%T%F%T[%p]%T[%c]%T%f:%l%T%m%n
 void LogFormatter::Init()
 {
-    //str, format, type
+    //str, format, type  1: 解析的formatter   0: 字符串
     std::vector<std::tuple<std::string, std::string, int>> vec;
     std::string nstr;
     for (size_t i = 0; i < mPattern.size(); ++i)

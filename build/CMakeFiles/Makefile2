@@ -75,8 +75,10 @@ CMAKE_BINARY_DIR = /home/xululala/SvrFrame/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/primo.dir/all
+all: CMakeFiles/test_thread.dir/all
 all: CMakeFiles/test_config.dir/all
+all: CMakeFiles/primo.dir/all
+all: CMakeFiles/test_log.dir/all
 
 .PHONY : all
 
@@ -86,10 +88,66 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/primo.dir/clean
+clean: CMakeFiles/test_thread.dir/clean
 clean: CMakeFiles/test_config.dir/clean
+clean: CMakeFiles/primo.dir/clean
+clean: CMakeFiles/test_log.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_thread.dir
+
+# All Build rule for target.
+CMakeFiles/test_thread.dir/all: CMakeFiles/primo.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=10,11 "Built target test_thread"
+.PHONY : CMakeFiles/test_thread.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_thread.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_thread.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_thread.dir/rule
+
+# Convenience name for target.
+test_thread: CMakeFiles/test_thread.dir/rule
+
+.PHONY : test_thread
+
+# clean rule for target.
+CMakeFiles/test_thread.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/clean
+.PHONY : CMakeFiles/test_thread.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_config.dir
+
+# All Build rule for target.
+CMakeFiles/test_config.dir/all: CMakeFiles/primo.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=6,7 "Built target test_config"
+.PHONY : CMakeFiles/test_config.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_config.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_config.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_config.dir/rule
+
+# Convenience name for target.
+test_config: CMakeFiles/test_config.dir/rule
+
+.PHONY : test_config
+
+# clean rule for target.
+CMakeFiles/test_config.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/clean
+.PHONY : CMakeFiles/test_config.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/primo.dir
@@ -98,12 +156,12 @@ clean: CMakeFiles/test_config.dir/clean
 CMakeFiles/primo.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/primo.dir/build.make CMakeFiles/primo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=1,2,3,4 "Built target primo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target primo"
 .PHONY : CMakeFiles/primo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/primo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/primo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 0
 .PHONY : CMakeFiles/primo.dir/rule
@@ -119,31 +177,31 @@ CMakeFiles/primo.dir/clean:
 .PHONY : CMakeFiles/primo.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_config.dir
+# Target rules for target CMakeFiles/test_log.dir
 
 # All Build rule for target.
-CMakeFiles/test_config.dir/all: CMakeFiles/primo.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=5,6 "Built target test_config"
-.PHONY : CMakeFiles/test_config.dir/all
+CMakeFiles/test_log.dir/all: CMakeFiles/primo.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=8,9 "Built target test_log"
+.PHONY : CMakeFiles/test_log.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_config.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_config.dir/all
+CMakeFiles/test_log.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_log.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xululala/SvrFrame/build/CMakeFiles 0
-.PHONY : CMakeFiles/test_config.dir/rule
+.PHONY : CMakeFiles/test_log.dir/rule
 
 # Convenience name for target.
-test_config: CMakeFiles/test_config.dir/rule
+test_log: CMakeFiles/test_log.dir/rule
 
-.PHONY : test_config
+.PHONY : test_log
 
 # clean rule for target.
-CMakeFiles/test_config.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/clean
-.PHONY : CMakeFiles/test_config.dir/clean
+CMakeFiles/test_log.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/clean
+.PHONY : CMakeFiles/test_log.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

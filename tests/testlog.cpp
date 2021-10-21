@@ -6,7 +6,7 @@
  * @LastEditors: sueRimn
  * @LastEditTime: 2021-09-30 15:50:25
  */
-#include "../src/log/Logger.h"
+#include "../primo/log/Logger.h"
 
 
 int main(int argc, char* argv[])

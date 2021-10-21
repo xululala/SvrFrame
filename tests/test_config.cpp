@@ -7,8 +7,8 @@
  * @LastEditTime: 2021-10-02 15:31:59
  */
 
-#include "../src/log/Logger.h"
-#include "../src/config.h"
+#include "../primo/log/Logger.h"
+#include "../primo/config.h"
 
 //primo::CfgVar< std::vector<int> >::ptr test_vec_cfg = 
     //primo::Config::LookUp("system.vec", std::vector<int>(2, 3), "test vec cfg");
@@ -40,6 +40,6 @@ int main(int argc, char** argv)
     
     //P_LOG_INFO(P_LOG_ROOT()) << "After: " << test_map_cfg->ToString();
     test_config_log();
-    P_LOG_INFO(P_LOG_NAME("sys")) << "test";
+    //P_LOG_INFO(P_LOG_NAME("system")) << "test";
     return 0;
 }

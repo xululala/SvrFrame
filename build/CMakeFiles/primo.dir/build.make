@@ -79,60 +79,75 @@ include CMakeFiles/primo.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/primo.dir/flags.make
 
-CMakeFiles/primo.dir/src/log/Logger.o: CMakeFiles/primo.dir/flags.make
-CMakeFiles/primo.dir/src/log/Logger.o: ../src/log/Logger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/primo.dir/src/log/Logger.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/src/log/Logger.o -c /home/xululala/SvrFrame/src/log/Logger.cpp
+CMakeFiles/primo.dir/primo/log/Logger.o: CMakeFiles/primo.dir/flags.make
+CMakeFiles/primo.dir/primo/log/Logger.o: ../primo/log/Logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/primo.dir/primo/log/Logger.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/primo/log/Logger.o -c /home/xululala/SvrFrame/primo/log/Logger.cpp
 
-CMakeFiles/primo.dir/src/log/Logger.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/src/log/Logger.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/src/log/Logger.cpp > CMakeFiles/primo.dir/src/log/Logger.i
+CMakeFiles/primo.dir/primo/log/Logger.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/primo/log/Logger.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/primo/log/Logger.cpp > CMakeFiles/primo.dir/primo/log/Logger.i
 
-CMakeFiles/primo.dir/src/log/Logger.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/src/log/Logger.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/src/log/Logger.cpp -o CMakeFiles/primo.dir/src/log/Logger.s
+CMakeFiles/primo.dir/primo/log/Logger.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/primo/log/Logger.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/primo/log/Logger.cpp -o CMakeFiles/primo.dir/primo/log/Logger.s
 
-CMakeFiles/primo.dir/src/util.o: CMakeFiles/primo.dir/flags.make
-CMakeFiles/primo.dir/src/util.o: ../src/util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/primo.dir/src/util.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/src/util.o -c /home/xululala/SvrFrame/src/util.cpp
+CMakeFiles/primo.dir/primo/util.o: CMakeFiles/primo.dir/flags.make
+CMakeFiles/primo.dir/primo/util.o: ../primo/util.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/primo.dir/primo/util.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/primo/util.o -c /home/xululala/SvrFrame/primo/util.cpp
 
-CMakeFiles/primo.dir/src/util.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/src/util.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/src/util.cpp > CMakeFiles/primo.dir/src/util.i
+CMakeFiles/primo.dir/primo/util.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/primo/util.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/primo/util.cpp > CMakeFiles/primo.dir/primo/util.i
 
-CMakeFiles/primo.dir/src/util.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/src/util.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/src/util.cpp -o CMakeFiles/primo.dir/src/util.s
+CMakeFiles/primo.dir/primo/util.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/primo/util.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/primo/util.cpp -o CMakeFiles/primo.dir/primo/util.s
 
-CMakeFiles/primo.dir/src/config.o: CMakeFiles/primo.dir/flags.make
-CMakeFiles/primo.dir/src/config.o: ../src/config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/primo.dir/src/config.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/src/config.o -c /home/xululala/SvrFrame/src/config.cpp
+CMakeFiles/primo.dir/primo/config.o: CMakeFiles/primo.dir/flags.make
+CMakeFiles/primo.dir/primo/config.o: ../primo/config.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/primo.dir/primo/config.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/primo/config.o -c /home/xululala/SvrFrame/primo/config.cpp
 
-CMakeFiles/primo.dir/src/config.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/src/config.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/src/config.cpp > CMakeFiles/primo.dir/src/config.i
+CMakeFiles/primo.dir/primo/config.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/primo/config.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/primo/config.cpp > CMakeFiles/primo.dir/primo/config.i
 
-CMakeFiles/primo.dir/src/config.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/src/config.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/src/config.cpp -o CMakeFiles/primo.dir/src/config.s
+CMakeFiles/primo.dir/primo/config.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/primo/config.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/primo/config.cpp -o CMakeFiles/primo.dir/primo/config.s
+
+CMakeFiles/primo.dir/primo/thread.o: CMakeFiles/primo.dir/flags.make
+CMakeFiles/primo.dir/primo/thread.o: ../primo/thread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/primo.dir/primo/thread.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/primo.dir/primo/thread.o -c /home/xululala/SvrFrame/primo/thread.cpp
+
+CMakeFiles/primo.dir/primo/thread.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/primo.dir/primo/thread.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xululala/SvrFrame/primo/thread.cpp > CMakeFiles/primo.dir/primo/thread.i
+
+CMakeFiles/primo.dir/primo/thread.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/primo.dir/primo/thread.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xululala/SvrFrame/primo/thread.cpp -o CMakeFiles/primo.dir/primo/thread.s
 
 # Object files for target primo
 primo_OBJECTS = \
-"CMakeFiles/primo.dir/src/log/Logger.o" \
-"CMakeFiles/primo.dir/src/util.o" \
-"CMakeFiles/primo.dir/src/config.o"
+"CMakeFiles/primo.dir/primo/log/Logger.o" \
+"CMakeFiles/primo.dir/primo/util.o" \
+"CMakeFiles/primo.dir/primo/config.o" \
+"CMakeFiles/primo.dir/primo/thread.o"
 
 # External object files for target primo
 primo_EXTERNAL_OBJECTS =
 
-../lib/libprimo.so: CMakeFiles/primo.dir/src/log/Logger.o
-../lib/libprimo.so: CMakeFiles/primo.dir/src/util.o
-../lib/libprimo.so: CMakeFiles/primo.dir/src/config.o
+../lib/libprimo.so: CMakeFiles/primo.dir/primo/log/Logger.o
+../lib/libprimo.so: CMakeFiles/primo.dir/primo/util.o
+../lib/libprimo.so: CMakeFiles/primo.dir/primo/config.o
+../lib/libprimo.so: CMakeFiles/primo.dir/primo/thread.o
 ../lib/libprimo.so: CMakeFiles/primo.dir/build.make
 ../lib/libprimo.so: CMakeFiles/primo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library ../lib/libprimo.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library ../lib/libprimo.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/primo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/test_thread.dir/tests/test_thread.o -o ../bin/test_thread   -L/home/xululala/SvrFrame/lib  -L/usr/local/lib  -Wl,-rpath,/home/xululala/SvrFrame/lib ../lib/libprimo.so -lpthread /usr/local/lib/libyaml-cpp.a 

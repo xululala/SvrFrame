@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/xululala/SvrFrame/src/Singleton.h
+/home/xululala/SvrFrame/primo/Singleton.h
 memory
 -
 
-/home/xululala/SvrFrame/src/config.h
+/home/xululala/SvrFrame/primo/config.h
 memory
 -
 string
@@ -30,11 +30,11 @@ list
 functional
 -
 log/Logger.h
-/home/xululala/SvrFrame/src/log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 util.h
-/home/xululala/SvrFrame/src/util.h
+/home/xululala/SvrFrame/primo/util.h
 
-/home/xululala/SvrFrame/src/log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 string
 -
 memory
@@ -60,11 +60,11 @@ stdarg.h
 set
 -
 ../util.h
-/home/xululala/SvrFrame/src/util.h
+/home/xululala/SvrFrame/primo/util.h
 ../Singleton.h
-/home/xululala/SvrFrame/src/Singleton.h
+/home/xululala/SvrFrame/primo/Singleton.h
 
-/home/xululala/SvrFrame/src/util.h
+/home/xululala/SvrFrame/primo/util.h
 pthread.h
 -
 unistd.h
@@ -81,8 +81,8 @@ string
 -
 
 /home/xululala/SvrFrame/tests/test_config.cpp
-../src/log/Logger.h
-/home/xululala/SvrFrame/src/log/Logger.h
-../src/config.h
-/home/xululala/SvrFrame/src/config.h
+../primo/log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
+../primo/config.h
+/home/xululala/SvrFrame/primo/config.h
 

@@ -82,10 +82,10 @@ class LogEvent
 public:
     typedef std::shared_ptr<LogEvent> ptr;
 
-     LogEvent(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level
-             ,const char* file, int32_t line, uint32_t elapse
-             ,uint32_t thread_id, uint32_t fiber_id, uint64_t time
-             ,const std::string& thread_name);
+    LogEvent(std::shared_ptr<Logger> logger, LOG_LEVEL::LEVEL level
+            , const char* file, int32_t line, uint32_t elapse
+            , uint32_t thread_id, uint32_t fiber_id, uint64_t time
+            , const std::string& thread_name);
 
     const char* GetFile() const {return mFile;}
 
