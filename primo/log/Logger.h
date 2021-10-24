@@ -23,6 +23,7 @@
 #include <set>
 #include "../util.h"
 #include "../Singleton.h"
+#include "../thread.h"
 
 //流式日志
 #define P_LOG_LEVEL(logger, level) \
@@ -167,7 +168,7 @@ class LogAppender
 {
 friend class Logger;
 public:
-    //typedef Spinlock MutexType; 
+    typedef SpinLock MutexType; 
     LogAppender(){};
     virtual ~LogAppender(){};
     
@@ -176,20 +177,9 @@ public:
     
     virtual std::string ToYamlString() = 0;
 
-    LogFormatter::ptr GetFormatter() const { return mFormatter;};
+    LogFormatter::ptr GetFormatter();
 
-    void SetFormatter(LogFormatter::ptr val) 
-    { 
-        mFormatter = val;
-        if(mFormatter) 
-        {
-            bHasFormatter = true;
-        } 
-        else 
-        {
-            bHasFormatter = false;
-        }
-    }
+    void SetFormatter(LogFormatter::ptr val);
 
     void SetLevel(LOG_LEVEL::LEVEL level)
     {
@@ -205,7 +195,7 @@ protected:
     LOG_LEVEL::LEVEL mLevel = LOG_LEVEL::DEBUG;
     bool bHasFormatter = false;
     LogFormatter::ptr mFormatter;
-    //MutexType mMutex;
+    MutexType mMutex;
 };
 
 
@@ -245,6 +235,7 @@ class Logger : public std::enable_shared_from_this<Logger>
 {
 friend class LoggerMgr;
 public:
+    typedef SpinLock MutexType;
     typedef std::shared_ptr<Logger> ptr;
     //Logger();
     Logger(const std::string& name = "root");
@@ -291,6 +282,7 @@ private:
     
     //主日志器， 如果当前日志未定义，则使用主日志器输出
     Logger::ptr mRoot;
+    MutexType mMutex;
 };
 
 class LogEventWrap
@@ -321,6 +313,7 @@ private:
 class LoggerMgr
 {
 public:
+    typedef SpinLock MutexType;
     LoggerMgr()
     {
         mRoot.reset(new Logger);
@@ -335,6 +328,7 @@ public:
 private:
      std::map<std::string, Logger::ptr> mLoggers;
      Logger::ptr mRoot;
+     MutexType mMutex;
 };
 
 typedef Singleton<LoggerMgr> LOGMGR;

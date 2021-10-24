@@ -3,6 +3,7 @@
 
 CMakeFiles/test_log.dir/tests/testlog.o: ../primo/Singleton.h
 CMakeFiles/test_log.dir/tests/testlog.o: ../primo/log/Logger.h
+CMakeFiles/test_log.dir/tests/testlog.o: ../primo/thread.h
 CMakeFiles/test_log.dir/tests/testlog.o: ../primo/util.h
 CMakeFiles/test_log.dir/tests/testlog.o: ../tests/testlog.cpp
 

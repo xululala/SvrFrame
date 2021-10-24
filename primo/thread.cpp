@@ -30,13 +30,11 @@ int Semaphore::notify()
 
 int Semaphore::wait()
 {
-
     int iRet = sem_wait(&mSemaphore);
     if (iRet)
     {
         throw std::logic_error("sem_wait error");
     }
-
 }
 
 Thread::Thread(std::function<void()> cb, const std::string& name)

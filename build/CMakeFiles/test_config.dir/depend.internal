@@ -5,5 +5,6 @@ CMakeFiles/test_config.dir/tests/test_config.o
  /home/xululala/SvrFrame/primo/Singleton.h
  /home/xululala/SvrFrame/primo/config.h
  /home/xululala/SvrFrame/primo/log/Logger.h
+ /home/xululala/SvrFrame/primo/thread.h
  /home/xululala/SvrFrame/primo/util.h
  /home/xululala/SvrFrame/tests/test_config.cpp

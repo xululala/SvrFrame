@@ -154,7 +154,7 @@ public:
 
     ~Mutex()
     {
-        unlock();
+        pthread_mutex_destroy(&mMutex);
     }
 
     void unlock()
@@ -199,13 +199,39 @@ public:
 
     ~RWMutex()
     {
-        pthread_rwlock_unlock(&mMutex);
+        pthread_rwlock_destroy(&mMutex);
     }
 
 private:
     pthread_rwlock_t mMutex;
 };
 
+class SpinLock
+{
+public:
+    typedef ScopeLockImpl<SpinLock> Lock;
+    SpinLock()
+    {
+        pthread_spin_init(&mMutex, PTHREAD_PROCESS_PRIVATE);
+    }
+
+    ~SpinLock()
+    {
+        pthread_spin_destroy(&mMutex);
+    }
+
+    void lock()
+    {
+        pthread_spin_lock(&mMutex);
+    }
+
+    void unlock()
+    {
+        pthread_spin_unlock(&mMutex);
+    }
+private:
+    pthread_spinlock_t mMutex;
+};
 
 
 class Thread

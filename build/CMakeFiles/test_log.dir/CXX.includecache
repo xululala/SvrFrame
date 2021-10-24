@@ -39,6 +39,20 @@ set
 /home/xululala/SvrFrame/primo/util.h
 ../Singleton.h
 /home/xululala/SvrFrame/primo/Singleton.h
+../thread.h
+/home/xululala/SvrFrame/primo/thread.h
+
+/home/xululala/SvrFrame/primo/thread.h
+thread
+-
+pthread.h
+-
+functional
+-
+memory
+-
+semaphore.h
+-
 
 /home/xululala/SvrFrame/primo/util.h
 pthread.h

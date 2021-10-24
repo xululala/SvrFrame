@@ -6,12 +6,14 @@ CMakeFiles/primo.dir/primo/config.o
  /home/xululala/SvrFrame/primo/config.cpp
  /home/xululala/SvrFrame/primo/config.h
  /home/xululala/SvrFrame/primo/log/Logger.h
+ /home/xululala/SvrFrame/primo/thread.h
  /home/xululala/SvrFrame/primo/util.h
 CMakeFiles/primo.dir/primo/log/Logger.o
  /home/xululala/SvrFrame/primo/Singleton.h
  /home/xululala/SvrFrame/primo/config.h
  /home/xululala/SvrFrame/primo/log/Logger.cpp
  /home/xululala/SvrFrame/primo/log/Logger.h
+ /home/xululala/SvrFrame/primo/thread.h
  /home/xululala/SvrFrame/primo/util.h
 CMakeFiles/primo.dir/primo/thread.o
  /home/xululala/SvrFrame/primo/Singleton.h
