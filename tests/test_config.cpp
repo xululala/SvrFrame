@@ -40,6 +40,13 @@ int main(int argc, char** argv)
     
     //P_LOG_INFO(P_LOG_ROOT()) << "After: " << test_map_cfg->ToString();
     test_config_log();
+    primo::Config::Visit([](primo::CfgVarBase::ptr var)
+    {
+        P_LOG_INFO(P_LOG_ROOT()) << "name: "<< var->GetName()
+                << "desc: " << var->GetDesc()
+                << " typename: " << var->GetTypeName()
+                << " value: " << var->ToString();
+    });
     //P_LOG_INFO(P_LOG_NAME("system")) << "test";
     return 0;
 }

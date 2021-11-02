@@ -69,6 +69,10 @@ cxxabi.h
 -
 string
 -
+vector
+-
+log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 
 /home/xululala/SvrFrame/tests/testlog.cpp
 ../primo/log/Logger.h

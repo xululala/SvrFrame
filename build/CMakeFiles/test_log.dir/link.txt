@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/test_log.dir/tests/testlog.o -o ../bin/test_log   -L/home/xululala/SvrFrame/lib  -L/usr/local/lib  -Wl,-rpath,/home/xululala/SvrFrame/lib ../lib/libprimo.so -lpthread /usr/local/lib/libyaml-cpp.a 
+/usr/bin/c++ -g -rdynamic CMakeFiles/test_log.dir/tests/testlog.o -o ../bin/test_log   -L/home/xululala/SvrFrame/lib  -Wl,-rpath,/home/xululala/SvrFrame/lib ../lib/libprimo.so -lpthread -lyaml-cpp 

@@ -10,6 +10,32 @@
 memory
 -
 
+/home/xululala/SvrFrame/primo/config.h
+memory
+-
+string
+-
+sstream
+-
+boost/lexical_cast.hpp
+-
+yaml-cpp/yaml.h
+-
+unordered_map
+-
+unordered_set
+-
+list
+-
+functional
+-
+log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
+util.h
+/home/xululala/SvrFrame/primo/util.h
+thread.h
+/home/xululala/SvrFrame/primo/thread.h
+
 /home/xululala/SvrFrame/primo/log/Logger.h
 string
 -
@@ -69,6 +95,10 @@ cxxabi.h
 -
 string
 -
+vector
+-
+log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 
 /home/xululala/SvrFrame/tests/test_thread.cpp
 ../primo/thread.h
@@ -77,4 +107,6 @@ string
 /home/xululala/SvrFrame/primo/log/Logger.h
 vector
 -
+../primo/config.h
+/home/xululala/SvrFrame/primo/config.h
 

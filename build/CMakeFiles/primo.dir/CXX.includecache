@@ -37,6 +37,8 @@ log/Logger.h
 /home/xululala/SvrFrame/primo/log/Logger.h
 util.h
 /home/xululala/SvrFrame/primo/util.h
+thread.h
+/home/xululala/SvrFrame/primo/thread.h
 
 /home/xululala/SvrFrame/primo/log/Logger.cpp
 Logger.h
@@ -94,6 +96,12 @@ memory
 semaphore.h
 -
 
+/home/xululala/SvrFrame/primo/util.cpp
+util.h
+/home/xululala/SvrFrame/primo/util.h
+execinfo.h
+-
+
 /home/xululala/SvrFrame/primo/util.h
 pthread.h
 -
@@ -109,4 +117,8 @@ cxxabi.h
 -
 string
 -
+vector
+-
+log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 

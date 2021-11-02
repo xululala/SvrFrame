@@ -227,6 +227,7 @@ public:
 private:
     std::string mFileName;
     std::ofstream mFileStream;
+    uint64_t mLastTime;
 };
 
 
@@ -263,10 +264,7 @@ public:
     //设置文本日志格式
     void SetFormatter(const std::string& str);
 
-    void ClearAppenders()
-    {
-        mAppenderList.clear();
-    }
+    void ClearAppenders();
 
     std::string GetFormatterPattern() const
     {

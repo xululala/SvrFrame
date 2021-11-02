@@ -194,6 +194,12 @@ void Logger::Log(LOG_LEVEL::LEVEL level, LogEvent::ptr event)
     }
 }
 
+void Logger::ClearAppenders()
+{
+    MutexType::Lock lock(mMutex);
+    mAppenderList.clear();
+}
+
 void Logger::debug(LogEvent::ptr event) 
 {
     Log(LOG_LEVEL::DEBUG, event);
@@ -277,8 +283,17 @@ void FileAppender::Log(Logger::ptr logger, LOG_LEVEL::LEVEL level, LogEvent::ptr
 {
     if(level >= mLevel) 
     {
+        uint64_t now = event->GetTime();
+        if (now >= mLastTime + 3)
+        {
+            ReOpen();
+            mLastTime = now;
+        }
         MutexType::Lock lock(mMutex);
-        mFileStream << mFormatter->format(logger, level, event);
+        if (! (mFileStream << mFormatter->format(logger, level, event)) )
+        {
+            std::cout << "error" << std::endl;
+        }
     }
 }
 
@@ -330,7 +345,6 @@ std::string LogFormatter::format(Logger::ptr logger, LOG_LEVEL::LEVEL level, Log
     }
     return ss.str();
 }
-
 
 
 class MessageFormatItem : public LogFormatter::FormatItem 

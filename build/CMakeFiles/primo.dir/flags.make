@@ -6,5 +6,5 @@ CXX_DEFINES = -Dprimo_EXPORTS
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -fPIC
+CXX_FLAGS = -g -fPIC
 

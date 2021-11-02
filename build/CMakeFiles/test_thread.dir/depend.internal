@@ -3,6 +3,7 @@
 
 CMakeFiles/test_thread.dir/tests/test_thread.o
  /home/xululala/SvrFrame/primo/Singleton.h
+ /home/xululala/SvrFrame/primo/config.h
  /home/xululala/SvrFrame/primo/log/Logger.h
  /home/xululala/SvrFrame/primo/thread.h
  /home/xululala/SvrFrame/primo/util.h

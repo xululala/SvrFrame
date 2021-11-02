@@ -33,6 +33,8 @@ log/Logger.h
 /home/xululala/SvrFrame/primo/log/Logger.h
 util.h
 /home/xululala/SvrFrame/primo/util.h
+thread.h
+/home/xululala/SvrFrame/primo/thread.h
 
 /home/xululala/SvrFrame/primo/log/Logger.h
 string
@@ -93,6 +95,10 @@ cxxabi.h
 -
 string
 -
+vector
+-
+log/Logger.h
+/home/xululala/SvrFrame/primo/log/Logger.h
 
 /home/xululala/SvrFrame/tests/test_config.cpp
 ../primo/log/Logger.h

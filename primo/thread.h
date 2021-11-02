@@ -206,6 +206,18 @@ private:
     pthread_rwlock_t mMutex;
 };
 
+// null read/write mutex for test
+class NullRWMutex
+{
+public:
+    typedef ReadScopeLockImpl<NullRWMutex> ReadLock;
+    typedef WriteScopeLockImpl<NullRWMutex> WriteLock;
+    typedef ScopeLockImpl<NullRWMutex> Lock;
+    void rdlock(){}
+    void wrlock(){}
+    void unlock(){}
+};
+
 class SpinLock
 {
 public:
@@ -233,6 +245,14 @@ private:
     pthread_spinlock_t mMutex;
 };
 
+// null mutex for test
+class NullMutex
+{
+public:
+    typedef ScopeLockImpl<NullMutex> Lock;
+    void lock(){}
+    void unlock(){}
+};
 
 class Thread
 {

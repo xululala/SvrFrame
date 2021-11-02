@@ -35,9 +35,6 @@
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -102,7 +99,6 @@ test_thread_EXTERNAL_OBJECTS =
 ../bin/test_thread: CMakeFiles/test_thread.dir/tests/test_thread.o
 ../bin/test_thread: CMakeFiles/test_thread.dir/build.make
 ../bin/test_thread: ../lib/libprimo.so
-../bin/test_thread: /usr/local/lib/libyaml-cpp.a
 ../bin/test_thread: CMakeFiles/test_thread.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xululala/SvrFrame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../bin/test_thread"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_thread.dir/link.txt --verbose=$(VERBOSE)

@@ -65,4 +65,13 @@ void Config::LoadFromYaml(const YAML::Node& root)
     }
 }
 
+void Config::Visit(std::function<void(CfgVarBase::ptr)> cb) {
+    RWMutexType::ReadLock lock(GetMutex());
+    CfgVarMap& m = GetDatas();
+    for(auto it = m.begin();
+            it != m.end(); ++it) {
+        cb(it->second);
+    }
+}
+
 }

@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++11 -rdynamic CMakeFiles/test.dir/tests/testlog.o -o ../bin/test  -Wl,-rpath,/home/xululala/SvrFrame/lib ../lib/libprimo.so 

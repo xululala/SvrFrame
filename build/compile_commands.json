@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/test_log.dir/tests/testlog.o -c /home/xululala/SvrFrame/tests/testlog.cpp",
+  "file": "/home/xululala/SvrFrame/tests/testlog.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++ -Dprimo_EXPORTS  -g -fPIC -o CMakeFiles/primo.dir/primo/log/Logger.o -c /home/xululala/SvrFrame/primo/log/Logger.cpp",
+  "file": "/home/xululala/SvrFrame/primo/log/Logger.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++ -Dprimo_EXPORTS  -g -fPIC -o CMakeFiles/primo.dir/primo/util.o -c /home/xululala/SvrFrame/primo/util.cpp",
+  "file": "/home/xululala/SvrFrame/primo/util.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++ -Dprimo_EXPORTS  -g -fPIC -o CMakeFiles/primo.dir/primo/config.o -c /home/xululala/SvrFrame/primo/config.cpp",
+  "file": "/home/xululala/SvrFrame/primo/config.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++ -Dprimo_EXPORTS  -g -fPIC -o CMakeFiles/primo.dir/primo/thread.o -c /home/xululala/SvrFrame/primo/thread.cpp",
+  "file": "/home/xululala/SvrFrame/primo/thread.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/test_config.dir/tests/test_config.o -c /home/xululala/SvrFrame/tests/test_config.cpp",
+  "file": "/home/xululala/SvrFrame/tests/test_config.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/test_thread.dir/tests/test_thread.o -c /home/xululala/SvrFrame/tests/test_thread.cpp",
+  "file": "/home/xululala/SvrFrame/tests/test_thread.cpp"
+},
+{
+  "directory": "/home/xululala/SvrFrame/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/test_util.dir/tests/test_util.o -c /home/xululala/SvrFrame/tests/test_util.cpp",
+  "file": "/home/xululala/SvrFrame/tests/test_util.cpp"
+}
+]

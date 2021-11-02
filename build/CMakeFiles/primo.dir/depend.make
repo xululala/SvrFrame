@@ -21,6 +21,9 @@ CMakeFiles/primo.dir/primo/thread.o: ../primo/thread.cpp
 CMakeFiles/primo.dir/primo/thread.o: ../primo/thread.h
 CMakeFiles/primo.dir/primo/thread.o: ../primo/util.h
 
+CMakeFiles/primo.dir/primo/util.o: ../primo/Singleton.h
+CMakeFiles/primo.dir/primo/util.o: ../primo/log/Logger.h
+CMakeFiles/primo.dir/primo/util.o: ../primo/thread.h
 CMakeFiles/primo.dir/primo/util.o: ../primo/util.cpp
 CMakeFiles/primo.dir/primo/util.o: ../primo/util.h
 

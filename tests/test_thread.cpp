@@ -1,8 +1,8 @@
 #include "../primo/thread.h"
 #include "../primo/log/Logger.h"
 #include <vector>
-
-primo::Logger::ptr logger = P_LOG_ROOT();
+#include "../primo/config.h"
+primo::Logger::ptr logger = P_LOG_NAME("root");
 
 int count = 0;
 primo::RWMutex mutex;
@@ -20,19 +20,28 @@ void func1()
     }
 }
 
-void func2();
+void func2()
+{
+    while (true)
+    {
+        P_LOG_INFO(logger) << "func2 log ";
+    }
+}
+
 
 int main(int argc, char** argv)
 {
+    YAML::Node root = YAML::LoadFile("../config/config.yml");
+    primo::Config::LoadFromYaml(root);
     std::vector<primo::Thread::ptr> thrs;
     P_LOG_INFO(logger) << " thread test start";
-    for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 2; ++i)
     {
-        primo::Thread::ptr thr(new primo::Thread(func1, "thread " + std::to_string(i)));
+        primo::Thread::ptr thr(new primo::Thread(func2, "thread " + std::to_string(i)));
         thrs.push_back(thr);
     }
 
-    for (int i = 0; i < 6; ++i)
+    for (int i = 0; i < 2; ++i)
     {
         thrs[i]->join();
     } 

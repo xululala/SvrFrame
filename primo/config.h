@@ -4,7 +4,7 @@
  * @Author: primoxu
  * @Date: 2021-10-01 13:26:41
  * @LastEditors: sueRimn
- * @LastEditTime: 2021-10-02 15:42:21
+ * @LastEditTime: 2021-10-28 11:00:33
  */
 #ifndef _PRIMO_CONFIG_H_
 #define _PRIMO_CONFIG_H_
@@ -21,7 +21,7 @@
 
 #include "log/Logger.h"
 #include "util.h"
-
+#include "thread.h"
 
 namespace primo
 {
@@ -311,6 +311,7 @@ template <class T, class FromStr = LexicalCast<std::string, T>,
 class CfgVar : public CfgVarBase
 {
 public:
+    typedef RWMutex RWMutexType;
     typedef std::shared_ptr<CfgVar> ptr;
     typedef std::function<void (const T& old_value, const T& new_value)> OnChangeCallback;
 
@@ -324,6 +325,7 @@ public:
     {
         try
         {
+            RWMutexType::ReadLock lock(mMutex);
             return ToStr()(mVal);
         }
         catch(const std::exception& e)
@@ -359,26 +361,33 @@ public:
 
     const T GetValue() const 
     {
+        RWMutexType::ReadLock lock(mMutex);
         return mVal;
     }
 
     void SetValue(const T& val)
     {
-        if (mVal == val)
         {
-            return;
+            //大括号 给读锁限定作用域
+            RWMutexType::ReadLock lock(mMutex);
+            if (mVal == val)
+            {
+                return;
+            }
+            
+            for (auto& cb : mCbs)
+            {
+                cb.second(mVal, val);
+            }
         }
-        
-        for (auto& cb : mCbs)
-        {
-            cb.second(mVal, val);
-        }
+        RWMutexType::WriteLock lock(mMutex);
         mVal = val;
     }
 
     uint64_t AddListener(OnChangeCallback cbfunc)
     {
         static uint64_t sFuncId= 0;
+        RWMutexType::WriteLock lock(mMutex);
         ++sFuncId;
         mCbs[sFuncId] = cbfunc;
         return sFuncId;
@@ -386,21 +395,25 @@ public:
 
     void DelListener(uint64_t key)
     {
+        RWMutexType::WriteLock lock(mMutex);
         mCbs.erase(key);
     }
 
     OnChangeCallback GetListener(uint64_t key)
     {
+        RWMutexType::ReadLock lock(mMutex);
         return mCbs[key];
     }
 
     void ClearListener()
     {
+        RWMutexType::WriteLock lock(mMutex);
         mCbs.clear();
     }
 private:
     T mVal;
     std::map<uint64_t, OnChangeCallback> mCbs;
+    RWMutexType mMutex;
 };
 
 
@@ -408,7 +421,7 @@ class Config
 { 
 public:
     typedef std::unordered_map<std::string, CfgVarBase::ptr> CfgVarMap;
-
+    typedef RWMutex RWMutexType;
     /**
      * @brief 获取/创建对应参数名的配置参数
      * @param[in] name 配置参数名称
@@ -424,6 +437,7 @@ public:
         const T& default_value, const std::string& desc = "")
     {
         //std::cout << " test trace" << std::endl;
+        RWMutexType::WriteLock lock(GetMutex());
         auto itr = GetDatas().find(name);
         if (itr != GetDatas().end())
         {
@@ -460,9 +474,9 @@ public:
      * @return 返回配置参数名为name的配置参数
      */
     template<class T>
-    static typename CfgVar<T>::ptr Lookup(const std::string& name) 
+    static typename CfgVar<T>::ptr LookUp(const std::string& name) 
     {
-        //RWMutexType::ReadLock lock(GetMutex());
+        RWMutexType::ReadLock lock(GetMutex());
         auto it = GetDatas().find(name);
         if(it == GetDatas().end())
         {
@@ -478,17 +492,24 @@ public:
      */
     static CfgVarBase::ptr LookUpBase(const std::string& name) 
     {
+        RWMutexType::ReadLock lock(GetMutex());
         auto it = GetDatas().find(name);
         return it == GetDatas().end() ? nullptr : it->second;
     }
 
     static void LoadFromYaml(const YAML::Node& root);
 
+    static void Visit(std::function<void(CfgVarBase::ptr)> cb);
 private:
     static CfgVarMap& GetDatas()
     {
         static CfgVarMap sDatas;
         return sDatas;
+    }
+    static RWMutexType& GetMutex()
+    {
+        static RWMutexType sMutex;
+        return sMutex;
     }
 };
 

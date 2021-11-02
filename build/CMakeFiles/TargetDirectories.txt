@@ -1,6 +1,7 @@
-/home/xululala/SvrFrame/build/CMakeFiles/test_thread.dir
-/home/xululala/SvrFrame/build/CMakeFiles/test_config.dir
 /home/xululala/SvrFrame/build/CMakeFiles/rebuild_cache.dir
-/home/xululala/SvrFrame/build/CMakeFiles/primo.dir
-/home/xululala/SvrFrame/build/CMakeFiles/edit_cache.dir
 /home/xululala/SvrFrame/build/CMakeFiles/test_log.dir
+/home/xululala/SvrFrame/build/CMakeFiles/edit_cache.dir
+/home/xululala/SvrFrame/build/CMakeFiles/primo.dir
+/home/xululala/SvrFrame/build/CMakeFiles/test_config.dir
+/home/xululala/SvrFrame/build/CMakeFiles/test_thread.dir
+/home/xululala/SvrFrame/build/CMakeFiles/test_util.dir

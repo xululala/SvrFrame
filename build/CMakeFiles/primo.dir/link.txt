@@ -1,1 +1,1 @@
-/usr/bin/c++ -fPIC -shared -Wl,-soname,libprimo.so -o ../lib/libprimo.so CMakeFiles/primo.dir/primo/log/Logger.o CMakeFiles/primo.dir/primo/util.o CMakeFiles/primo.dir/primo/config.o CMakeFiles/primo.dir/primo/thread.o 
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libprimo.so -o ../lib/libprimo.so CMakeFiles/primo.dir/primo/log/Logger.o CMakeFiles/primo.dir/primo/util.o CMakeFiles/primo.dir/primo/config.o CMakeFiles/primo.dir/primo/thread.o 
